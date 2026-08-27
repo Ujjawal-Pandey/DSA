@@ -7,14 +7,12 @@ long long cal(vector<int>& bloomDay,int cday,int NO , int  ADJ){
         if(bloomDay[i]<=cday){
             adjecent++;
         }
-        if(adjecent == ADJ){
-            bouquet++;
-            adjecent=0;
-        }
-        if(bloomDay[i]>cday){
+        else{
+            bouquet = bouquet + (adjecent/ADJ);
             adjecent=0;
         }
     }
+    bouquet = bouquet + (adjecent / ADJ);
     if (bouquet>=NO){
         return 1;
     }
@@ -23,7 +21,6 @@ long long cal(vector<int>& bloomDay,int cday,int NO , int  ADJ){
 class Solution {
 public:
     int minDays(vector<int>& bloomDay, int m, int k) {
-        
         if((long long )m*k> bloomDay.size()){
             return -1;
 
